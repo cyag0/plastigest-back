@@ -64,3 +64,52 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Instalacion
+
+
+### 1. **Clonar el repositorio**
+Abre visual estudio y selecciona la opcion de clonar proyecto https://github.com/cyag0/plastigest-app.git
+
+### 2. Instalar dependencias con Composer
+
+```bash
+composer install
+```
+
+### 3. Copiar el archivo de configuración
+abre la terminal del proyect
+plastigest-backend> ....
+
+```bash
+copy .env.example .env
+```
+
+### 4. Configurar la base de datos
+Edita el archivo .env para configurar la base de datos:
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=plastigest
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Generar llave
+```bash
+php artisan key:generate
+```
+### 6. Ejecutar migraciones y seeders
+```bash
+php artisan migrate
+```
+
+### 7. Iniciar el servidor de desarrollo
+* este comando siempre se debe de usar al trabajar, es como el npm start de reat native
+* Siempre tienes que tener iniciado xampp con sus servicios iniciados (apache y mysql)
+```bash
+php artisan serve
+```
+
+
