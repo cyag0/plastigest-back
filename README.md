@@ -204,7 +204,35 @@ si te equivocas usa lo siguiente para borrar la tabla
 php artisan migrate:rollback
 ```
 
-### 4. Manejar el Crud(opcional)
+### 6. Registrar la API
+este paso sirve para poder consumir la informacion desde el frontend, si no se hace esto no hay medio para poder comunicarse
+
+En el archivo `routes/api.php` tenemos que registrar la ruta para acceder a nuestra informacion
+
+```bash
+Route::apiResource('products', ProductController::class);
+```
+
+* lo que le pasamos como cadena de texto es la ruta que tenemos que poner en nuestro crud en el frontend
+* ProductController es el controlador que creamos al inicio tenemos que poner `::class` despues del controlador
+* La funcion apiResource nos genera las siguientes rutas pero de manera mas compacta
+
+Esto
+```bash
+Route::apiResource('products', ProductController::class);
+```
+
+Es lo mismo que esto
+```bash
+Route::get('products', [ProductController::class, 'index']);
+Route::post('products', [ProductController::class, 'store']);
+Route::get('products/{product}', [ProductController::class, 'show']);
+Route::put('products/{product}', [ProductController::class, 'update']);
+Route::delete('products/{product}', [ProductController::class, 'destroy']);
+```
+
+
+### 7. Manejar el Crud(opcional)
 
 #### manejar la creacion (opcional)
 Cuando el crud sea algo mas complejo puedes cambiar la logica de la funcion store sobreescribiendolo
