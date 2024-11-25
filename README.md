@@ -66,8 +66,15 @@ Este comando generará:
 
 * Modelo en `app/Models/Product.php`.
 * Migración en `database/migrations/{timestamp}_create_products_table.php`.
-* Resource en `app/Http/Resources/ProductResource.php`.
 * Controlador en
+
+Crear resource
+```bash
+php artisan make:resource ProductResource
+```
+
+* Resource en `app/Http/Resources/ProductResource.php`.
+
 
 ### 2. Configuracion del modelo
 
