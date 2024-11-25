@@ -86,7 +86,7 @@ hay un ejemplo de un modelo configurado en  `app/Models/Product.php`.
 * Probablemente el modulo tenga relaciones las relaciones me dices hablas para que te de una explicacion mejor
 
 ### 3. Configuracion del controlador
-hay un ejemplo de un modelo configurado en  `app/Models/Product.php`.
+hay un ejemplo de un modelo configurado en  `App/Http/Controllers/ProductController.php`.
 
 * Hasta arriba tenemos que hacer que la clase extienda de BaseController, este controlador lo hice para que los cruds simples se hagan solos
 
