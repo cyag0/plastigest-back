@@ -158,6 +158,18 @@ Dentro de esa clase copiamos la configuracion inicial
     }
 ```
 
+Tienes que validar los datos en el back para que se guarde la informacion en la info
+```bash
+    protected function storeValidationRules(Request $request): array
+    {
+        return $request->validate([
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'in_charge' => 'required|string',
+        ]);
+    }
+```
+
 ### 4. Configurar el archivo Resource creado (IMPORTANTE)
 hay un ejemplo de un modelo configurado en  `app/Http/Resources/ProductResource.php`.
 lo que hace este archivo es darle formato a la informacion que se va a recibir el frontend
