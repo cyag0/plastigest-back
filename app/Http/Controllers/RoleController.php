@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\LocationResource;
-use App\Models\Location;
+use App\Http\Resources\RoleResource;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class LocationController extends BaseController
+class RoleController extends BaseController
 {
     public function __construct()
     {
-        //primero es el modelo
-        parent::__construct(Location::class, LocationResource::class);
+        parent::__construct(Role::class, RoleResource::class);
     }
 
     protected function indexRelations(): array
@@ -31,11 +30,7 @@ class LocationController extends BaseController
 
     protected function storeValidationRules(Request $request): array
     {
-        return $request->validate([
-            'name' => 'required|string',
-            'address' => 'required|string',
-            'in_charge' => 'required|string',
-        ]);
+        return $request->validate([]);
     }
 
     protected function updateValidationRules(Request $request): array
