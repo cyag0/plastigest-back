@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('resource_role', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('resource_id')->constrained()->onDelete("cascade");
             $table->foreignId('role_id')->constrained()->onDelete("cascade");
-            $table->boolean('read')->default(false);
-            $table->boolean("write")->default(false);
-            $table->timestamps();
+            $table->boolean('create')->default(false);
+            $table->boolean("edit")->default(false);
+            $table->boolean("delete")->default(false);
         });
     }
 
