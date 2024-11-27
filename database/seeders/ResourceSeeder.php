@@ -13,13 +13,14 @@ class ResourceSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('resources')->delete();
         DB::table('resources')->insert([
             [
                 "id" => 1,
                 "name" => "Inicio",
                 "description" => "Accessos rapidos y reportes",
-                "resource" => "users",
-                "route" => "users",
+                "resource" => "dashboardd",
+                "route" => "dashboard",
                 "icon" => "view-dashboard",
             ],
             [

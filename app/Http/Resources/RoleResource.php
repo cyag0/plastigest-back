@@ -14,6 +14,26 @@ class RoleResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $item = [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+        ];
+
+        /** @var \App\Models\Role $role */
+        $role = $this;
+        if ($role->relationLoaded('permissions')) {
+            $permissions = [];
+            foreach ($role->permissions as $permission) {
+                $permissions[$permission->id . "_" . $permission->resource] = [
+                    'create' => $permission->pivot->create,
+                    'edit' => $permission->pivot->edit,
+                    'delete' => $permission->pivot->delete,
+                ];
+            }
+            $item['permissions'] = $permissions;
+        }
+
+        return $item;
     }
 }

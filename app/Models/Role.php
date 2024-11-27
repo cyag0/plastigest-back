@@ -14,4 +14,13 @@ class Role extends Model
         'name',
         'description',
     ];
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Resource::class)->withPivot([
+            'create',
+            'edit',
+            'delete',
+        ]);
+    }
 }
