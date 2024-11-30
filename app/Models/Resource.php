@@ -9,6 +9,16 @@ class Resource extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id',
+        'name',
+        'description',
+        'resource',
+        'route',
+        'icon',
+        'category',
+    ];
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);

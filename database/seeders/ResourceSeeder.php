@@ -22,6 +22,7 @@ class ResourceSeeder extends Seeder
                 "resource" => "dashboardd",
                 "route" => "dashboard",
                 "icon" => "view-dashboard",
+                "category" => null
             ],
             [
                 "id" => 2,
@@ -29,15 +30,17 @@ class ResourceSeeder extends Seeder
                 "description" => "Gestion de los usuarios y asignacion de roles",
                 "resource" => "users",
                 "route" => "users",
-                "icon" => "package",
+                "icon" => "account",
+                "category" => "admin"
             ],
             [
                 "id" => 3,
                 "name" => "Productos",
-                "description" => "Gestion de los productos",
+                "description" => "Administra los productos de la tienda",
                 "resource" => "products",
                 "route" => "products",
-                "icon" => "account",
+                "icon" => "package",
+                "category" => "inventory"
             ],
             [
                 "id" => 4,
@@ -46,15 +49,26 @@ class ResourceSeeder extends Seeder
                 "resource" => "suppliers",
                 "route" => "suppliers",
                 "icon" => "truck",
+                "category" => "inventory"
             ],
             [
                 "id" => 5,
                 "name" => "Roles y Permisos",
                 "description" => "Roles y permisos que tendran los usuarios para acceder a los recursos",
                 "resource" => "roles",
-                "route" => "roles",
+                "route" => "rolesPermisos",
                 "icon" => "shield-account",
+                "category" => "admin"
             ],
+            [
+                "id" => 6,
+                "name" => "Sucursales",
+                "description" => "Roles y permisos que tendran los usuarios para acceder a los recursos",
+                "resource" => "roles",
+                "route" => "locations",
+                "icon" => "store-settings",
+                "category" => "inventory"
+            ]
         ]);
     }
 }

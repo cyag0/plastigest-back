@@ -36,4 +36,16 @@ class UserController extends BaseController
     {
         return $this->storeValidationRules($request);
     }
+
+    public function store(Request $request)
+    {
+        $data = $this->storeValidationRules($request); // recibe los datos del formulario validados
+
+        /** @var User $user*/
+        $user = $this->create($data); // crea un nuevo usuario y despues manejas la relacion de sucursales
+
+        //codigo para manejar la relacion sucursal(location)...
+
+        return new $this->resource($user); // retorna el usuario creado
+    }
 }
