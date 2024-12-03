@@ -23,17 +23,38 @@ abstract class BaseController extends Controller
 
     public function index(Request $request): JsonResource
     {
-        $filters = $request->query() ?? [];
+        $query = $request->query() ?? [];
+        $options = $query["query"] ?? [];
+        $filters = $query["filters"] ?? [];
+        $searchBy = $query["searchBy"] ?? [];
+        $sorter = $query["sorter"] ?? [];
 
-        $paginatePerPage = $filters['items_per_page'] ?? 10;
+        $paginatePerPage =  $options['items_per_page'] ?? 10;
 
         /** @var \Illuminate\Database\Eloquent\Builder */
         $query = $this->model::query();
 
         $query->with($this->indexRelations());
 
-        if (isset($filters["search"])) {
-            $query->where('name', 'LIKE', "%{$filters["search"]}%");
+        if (count($filters)) {
+            foreach ($filters as $key => $value) {
+                $query->where($key, $value);
+            }
+        }
+
+        if (isset($options["search"]) && count($searchBy)) {
+            $search = $options["search"];
+            $query->where(function ($q) use ($searchBy, $search) {
+                foreach ($searchBy as $key) {
+                    $q->orWhere($key, 'LIKE', "%{$search}%");
+                }
+            });
+        }
+
+        if (count($sorter)) {
+            foreach ($sorter as $key => $value) {
+                $query->orderBy($key, $value);
+            }
         }
 
         $items = $query->paginate($paginatePerPage);

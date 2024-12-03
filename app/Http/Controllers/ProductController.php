@@ -16,17 +16,23 @@ class ProductController extends BaseController
 
     protected function indexRelations(): array
     {
-        return ['supplier'];
+        return [
+            'supplier'
+        ];
     }
 
     protected function showRelations(): array
     {
-        return ['supplier'];
+        return [
+            'supplier'
+        ];
     }
 
     protected function editRelations(): array
     {
-        return ['supplier'];
+        return [
+            'supplier'
+        ];
     }
 
     protected function storeValidationRules(Request $request): array
