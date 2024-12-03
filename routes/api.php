@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\RoleController;
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource("roles", RoleController::class);
     Route::apiResource("resources", ResourceController::class);
     Route::apiResource("users", UserController::class);
+    Route::apiResource("packages", PackageController::class);
 }, function () {
     return response()->json([
         'message' => 'Unauthorized'
