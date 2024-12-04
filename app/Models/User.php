@@ -45,4 +45,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function locations()
+    {
+        return $this->belongsToMany(
+            Location::class,
+            "user_location",
+            "user_id",
+            "location_id"
+        );
+    }
 }

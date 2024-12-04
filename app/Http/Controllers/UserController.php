@@ -33,14 +33,14 @@ class UserController extends BaseController
 
             'name' => ['required','string','max:255'], 
             'email' => ['required','string','email','max:255','unique:users,email,'.$request->route('user')],
-            'email_verfied_at' =>['required','string'],
-            'password' => ['required','string','min:8','confirmed'],
+            'password' => ['required','string',],
             'last_name' => ['required','string'],
             'phone_number' => ['required','string'],
-            'address' => ['required','string'],
+            'address' => ['nullable','string'],
             'image'=> ['nullable'],
             'is_active'=> ['boolean'],
             'role_id' => ['required','numeric'],
+            'locations' =>['required','array'],
 
 
         ]);
@@ -59,7 +59,8 @@ class UserController extends BaseController
         $user = $this->create($data); // crea un nuevo usuario y despues manejas la relacion de sucursales
 
         //codigo para manejar la relacion sucursal(location)...
+        $user->locations()->sync($request->locations); // agrega las sucursales al usuario
 
-        return new $this->resource($user); // retorna el usuario creado
+
     }
 }
