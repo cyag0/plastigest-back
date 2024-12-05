@@ -20,7 +20,7 @@ class ResourceSeeder extends Seeder
                 "name" => "Inicio",
                 "description" => "Accessos rapidos y reportes",
                 "resource" => "dashboardd",
-                "route" => "dashboard",
+                "route" => "(dashboard)",
                 "icon" => "view-dashboard",
                 "category" => null
             ],
@@ -29,7 +29,7 @@ class ResourceSeeder extends Seeder
                 "name" => "Usuarios",
                 "description" => "Gestion de los usuarios y asignacion de roles",
                 "resource" => "users",
-                "route" => "users",
+                "route" => "(users)",
                 "icon" => "account",
                 "category" => "admin"
             ],
@@ -38,7 +38,7 @@ class ResourceSeeder extends Seeder
                 "name" => "Productos",
                 "description" => "Administra los productos de la tienda",
                 "resource" => "products",
-                "route" => "products",
+                "route" => "(productos)",
                 "icon" => "package",
                 "category" => "inventory"
             ],
@@ -47,7 +47,7 @@ class ResourceSeeder extends Seeder
                 "name" => "Proveedores",
                 "description" => "Gestion de los proveedores",
                 "resource" => "suppliers",
-                "route" => "suppliers",
+                "route" => "(proveedores)",
                 "icon" => "truck",
                 "category" => "inventory"
             ],
@@ -56,7 +56,7 @@ class ResourceSeeder extends Seeder
                 "name" => "Roles y Permisos",
                 "description" => "Roles y permisos que tendran los usuarios para acceder a los recursos",
                 "resource" => "roles",
-                "route" => "rolesPermisos",
+                "route" => "(rolesPermisos)",
                 "icon" => "shield-account",
                 "category" => "admin"
             ],
@@ -65,10 +65,19 @@ class ResourceSeeder extends Seeder
                 "name" => "Sucursales",
                 "description" => "Roles y permisos que tendran los usuarios para acceder a los recursos",
                 "resource" => "roles",
-                "route" => "locations",
+                "route" => "(locations)",
                 "icon" => "store-settings",
                 "category" => "inventory"
-            ]
+            ],
+            [
+                "id" => 7,
+                "name" => "Paquetes",
+                "description" => "Administra los paquetes de la tienda",
+                "resource" => "packages",
+                "route" => "(packages)",
+                "icon" => "package-variant",
+                "category" => "inventory"
+            ],
         ]);
     }
 }

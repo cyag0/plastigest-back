@@ -15,17 +15,26 @@ class UserController extends BaseController
 
     protected function indexRelations(): array
     {
-        return [];
+        return [
+            "role",
+            "locations"
+        ];
     }
 
     protected function showRelations(): array
     {
-        return [];
+        return [
+            "role",
+            "locations"
+        ];
     }
 
     protected function editRelations(): array
     {
-        return [];
+        return [
+            "role",
+            "locations"
+        ];
     }
 
     protected function storeValidationRules(Request $request): array
@@ -42,8 +51,6 @@ class UserController extends BaseController
             'is_active' => ['boolean'],
             'role_id' => ['required', 'numeric'],
             'locations' => ['required', 'array'],
-
-
         ]);
     }
 
@@ -60,10 +67,26 @@ class UserController extends BaseController
         $user = $this->create($data); // crea un nuevo usuario y despues manejas la relacion de sucursales
 
         //codigo para manejar la relacion sucursal(location)...
-        $user->locations()->sync($request->locations); // agrega las sucursales al usuario
+        $user->locations()->sync(
+            array_keys($data['locations'])
+        ); // agrega las sucursales al usuario
 
-
+        return new UserResource($user);
     }
 
-    public function update(Request $request, $id) {}
+    public function update(Request $request, $id)
+    {
+        $data = $this->updateValidationRules($request); // recibe los datos del formulario validados
+
+        /** @var User $user */
+        $user = User::find($id); // busca el usuario a actualizar
+
+        $user->update($data); // actualiza los datos del usuario
+
+        $user->locations()->sync(
+            array_keys($data['locations'])
+        );
+
+        return new UserResource($user);
+    }
 }

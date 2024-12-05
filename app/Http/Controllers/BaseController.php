@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -67,7 +68,9 @@ abstract class BaseController extends Controller
     {
         $item = $this->find($id);
 
-        return new $this->resource($item);
+        return (new $this->resource($item))->additional([
+            "method" => "show",
+        ]);
     }
 
     public function store(Request $request)
@@ -123,9 +126,9 @@ abstract class BaseController extends Controller
             return response()->json(['data' => 'El recurso no se ha encontrado'], 404);
         }
 
-        $item = $resource->update($data);
+        $resource->update($data);
 
-        return $item;
+        return $resource->fresh();
     }
 
     public function find($id, array $queryOptions = [])
